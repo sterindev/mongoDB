@@ -1,0 +1,479 @@
+                                     CREATING collections
+
+1)//creating users collections
+
+ db.users.insertMany([{ name:"sterin",email:"sterin@gmail.com",codekata_problems_solved:"50",role:"student",mentor:"MR.Venkat"},
+ { name:"jane",email:"jane@gmail.com",codekata_problems_solved:"70",role:"student",mentor:"MR.Venkat"}]);
+
+OUTPUT
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('67164b292b5285381cc73bfc'),
+    '1': ObjectId('67164b292b5285381cc73bfd')
+  }
+zenclassprogramme> db.users.find()
+
+                                       OUTPUT:
+
+[
+  {
+    _id: ObjectId('67164b292b5285381cc73bfc'),
+    name: 'sterin',
+    email: 'sterin@gmail.com',
+    codekata_problems_solved: '50',
+    role: 'student',
+    mentor: 'MR.Venkat'
+  },
+  {
+    _id: ObjectId('67164b292b5285381cc73bfd'),
+    name: 'jane',
+    email: 'jane@gmail.com',
+    codekata_problems_solved: '70',
+    role: 'student',
+    mentor: 'MR.Venkat'
+  }
+]
+
+
+
+2)//Creating Codekata collections
+
+
+zenclassprogramme> db.codekata.insertMany([{userId:ObjectId('67164b292b5285381cc73bfc'),challengeTitle:"rolling dice",difficuiltyLevel:"easy",submissiondate:new Date(),score:"100",languageUsed:"javaScript"},{userId:ObjectId('67164b292b5285381cc73bfd'),challengeTitle:"FizzBuzz",difficuiltyLevel:"medium",submissiondate:new Date(),score:"100",languageUsed:"javaScript"}]);
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('6716514a9aa007596fc73bf8'),
+    '1': ObjectId('6716514a9aa007596fc73bf9')
+  }
+}
+zenclassprogramme> db.codekata.find()
+
+                            OUTPUT:
+
+[
+  {
+    _id: ObjectId('6716514a9aa007596fc73bf8'),
+    userId: ObjectId('67164b292b5285381cc73bfc'),
+    challengeTitle: 'rolling dice',
+    difficuiltyLevel: 'easy',
+    submissiondate: ISODate('2024-10-21T13:04:10.551Z'),
+    score: '100',
+    languageUsed: 'javaScript'
+  },
+  {
+    _id: ObjectId('6716514a9aa007596fc73bf9'),
+    userId: ObjectId('67164b292b5285381cc73bfd'),
+    challengeTitle: 'FizzBuzz',
+    difficuiltyLevel: 'medium',
+    submissiondate: ISODate('2024-10-21T13:04:10.551Z'),
+    score: '100',
+    languageUsed: 'javaScript'
+  }
+]
+
+3)//creating attendance collections
+
+zenclassprogramme> db.attendance.insertMany([{ userId: ObjectId('67164b292b5285381cc73bfc'), classDate: new Date("2020-10-20"), status: "present", createdAt: new Date() }, { userId: ObjectId('67164b292b5285381cc73bfd'), classDate: new Date("2020-10-20"), status: "Absent", createdAt: new Date()}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('6716524c9aa007596fc73bfa'),
+    '1': ObjectId('6716524c9aa007596fc73bfb')
+  }
+}
+zenclassprogramme> db.attendance.find()
+       
+                                          OUTPUT:
+
+[
+  {
+    _id: ObjectId('6716524c9aa007596fc73bfa'),
+    userId: ObjectId('67164b292b5285381cc73bfc'),
+    classDate: ISODate('2020-10-20T00:00:00.000Z'),
+    status: 'present',
+    createdAt: ISODate('2024-10-21T13:08:28.785Z')
+  },
+  {
+    _id: ObjectId('6716524c9aa007596fc73bfb'),
+    userId: ObjectId('67164b292b5285381cc73bfd'),
+    classDate: ISODate('2020-10-20T00:00:00.000Z'),
+    status: 'Absent',
+    createdAt: ISODate('2024-10-21T13:08:28.785Z')
+  }
+]
+
+4)//creating topics collections
+
+zenclassprogramme> db.topics.insertMany([{title:"Introduction to mongo",description:"A beginner's guide mongo",createdAT:new Date("2020-10-20"),updatedAt:new Date()},{title:"Introduction to java",description:"A beginner's guide java",createdAT:new Date("2020-10-21"),updatedAt:new Date()}]);
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('671656b99aa007596fc73c08'),
+    '1': ObjectId('671656b99aa007596fc73c09')
+  }
+}
+zenclassprogramme> db.topics.find()
+
+                                        OUTPUT:
+
+[
+  {
+    _id: ObjectId('671656b99aa007596fc73c08'),
+    title: 'Introduction to mongo',
+    description: "A beginner's guide mongo",
+    createdAT: ISODate('2020-10-20T00:00:00.000Z'),
+    updatedAt: ISODate('2024-10-21T13:27:21.419Z')
+  },
+  {
+    _id: ObjectId('671656b99aa007596fc73c09'),
+    title: 'Introduction to java',
+    description: "A beginner's guide java",
+    createdAT: ISODate('2020-10-21T00:00:00.000Z'),
+    updatedAt: ISODate('2024-10-21T13:27:21.419Z')
+  }
+]
+
+5)//creating tasks collections
+
+zenclassprogramme> db.tasks.insertMany([{ topicId:'671656b99aa007596fc73c08',title:"create an web",description:"follow the instructions given on the figma link",dueDate:new Date("2020-10-10"),createdAt:new Date('2020-10-02'), updatedAt:new Date()},{topicId:'671656b99aa007596fc73c09',title:"install MongoDB",description:"follow the instructions to install mongo db",dueDate:new Date("2020-10-10"),createdAt:new Date('2020-10-02'),updatedAt:new Date()}]);
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('671659a89aa007596fc73c0c'),
+    '1': ObjectId('671659a89aa007596fc73c0d')
+  }
+}
+zenclassprogramme> db.tasks.find()
+
+                                    OUTPUT:
+
+[
+  {
+    _id: ObjectId('671659a89aa007596fc73c0c'),
+    topicId: '671656b99aa007596fc73c08',
+    title: 'create an web',
+    description: 'follow the instructions given on the figma link',
+    dueDate: ISODate('2020-10-10T00:00:00.000Z'),
+    createdAt: ISODate('2020-10-02T00:00:00.000Z'),
+    updatedAt: ISODate('2024-10-21T13:39:52.692Z')
+  },
+  {
+    _id: ObjectId('671659a89aa007596fc73c0d'),
+    topicId: '671656b99aa007596fc73c09',
+    title: 'install MongoDB',
+    description: 'follow the instructions to install mongo db',
+    dueDate: ISODate('2020-10-10T00:00:00.000Z'),
+    createdAt: ISODate('2020-10-02T00:00:00.000Z'),
+    updatedAt: ISODate('2024-10-21T13:39:52.692Z')
+  }
+]
+
+6)//Creating companydrives collection:
+
+zenclassprogramme> db.CompanyDrives.insertMany([{driveName:"project Resources-1",driveLink:"https://drive1.com/resources1",createdAt:new Date('2020-10-28'),updatedAt:new Date()},{driveName:"project Resources-2",driveLink:"https://drive2.com/resources2",createdAt:new Date('2020-10-17'),updatedAt:new Date()}]);
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('67165b0e9aa007596fc73c0e'),
+    '1': ObjectId('67165b0e9aa007596fc73c0f')
+  }
+}
+zenclassprogramme> db.CompanyDrives.find()
+
+                                      OUTPUT:
+
+[
+  {
+    _id: ObjectId('67165b0e9aa007596fc73c0e'),
+    driveName: 'project Resources-1',
+    driveLink: 'https://drive1.com/resources1',
+    createdAt: ISODate('2020-10-28T00:00:00.000Z'),
+    updatedAt: ISODate('2024-10-21T13:45:50.365Z')
+  },
+  {
+    _id: ObjectId('67165b0e9aa007596fc73c0f'),
+    driveName: 'project Resources-2',
+    driveLink: 'https://drive2.com/resources2',
+    createdAt: ISODate('2020-10-17T00:00:00.000Z'),
+    updatedAt: ISODate('2024-10-21T13:45:50.365Z')
+  }
+] 
+
+7)//creating mentor collection:
+
+zenclassprogramme> db.mentors.insertMany([{userId:ObjectId('67164b292b5285381cc73bfc'),specialization:"Database Management",bio:"Experienced database Management",contactInfo:"venkat@gmail.com",createdAt:new Date()},{userId:ObjectId('67164b292b5285381cc73bfd'),specialization:"full stack development",bio:"Experienced full stack developer ",contactInfo:"gophichand@gmail.com",createdAt:new Date()}]);
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('671655599aa007596fc73c06'),
+    '1': ObjectId('671655599aa007596fc73c07')
+  }
+}
+zenclassprogramme> db.mentors.find()
+           
+                                      OUTPUT:
+
+[
+  {
+    _id: ObjectId('671655599aa007596fc73c06'),
+    userId: ObjectId('67164b292b5285381cc73bfc'),
+    specialization: 'Database Management',
+    bio: 'Experienced database Management',
+    contactInfo: 'venkat@gmail.com',
+    createdAt: ISODate('2024-10-21T13:21:29.965Z')
+  },
+  {
+    _id: ObjectId('671655599aa007596fc73c07'),
+    userId: ObjectId('67164b292b5285381cc73bfd'),
+    specialization: 'full stack development',
+    bio: 'Experienced full stack developer ',
+    contactInfo: 'gophichand@gmail.com',
+    createdAt: ISODate('2024-10-21T13:21:29.965Z')
+  }
+]
+
+
+
+                                       //QUERIES
+
+1)Find all the topics and tasks which are thought in the month of October
+  
+                   FOR TOPICS
+   
+zenclassprogramme> db.topics.find({
+...   createdAT: {
+...     $gte: new Date("2020-10-01"),
+...     $lt: new Date("2020-11-01")
+...   }
+... });
+[
+  {
+    _id: ObjectId('671656b99aa007596fc73c08'),
+    title: 'Introduction to mongo',
+    description: "A beginner's guide mongo",
+    createdAT: ISODate('2020-10-20T00:00:00.000Z'),
+    updatedAt: ISODate('2024-10-21T13:27:21.419Z')
+  },
+  {
+    _id: ObjectId('671656b99aa007596fc73c09'),
+    title: 'Introduction to java',
+    description: "A beginner's guide java",
+    createdAT: ISODate('2020-10-21T00:00:00.000Z'),
+    updatedAt: ISODate('2024-10-21T13:27:21.419Z')
+  }
+]
+    
+                           FOR TASKS 
+
+
+zenclassprogramme> db.tasks.find({
+...   createdAt: {
+...     $gte: new Date("2020-10-01"),
+...     $lt: new Date("2020-11-01")
+...   }
+... });
+[
+  {
+    _id: ObjectId('671659a89aa007596fc73c0c'),
+    topicId: '671656b99aa007596fc73c08',
+    title: 'create an web',
+    description: 'follow the instructions given on the figma link',
+    dueDate: ISODate('2020-10-10T00:00:00.000Z'),
+    createdAt: ISODate('2020-10-02T00:00:00.000Z'),
+    updatedAt: ISODate('2024-10-21T13:39:52.692Z')
+  },
+  {
+    _id: ObjectId('671659a89aa007596fc73c0d'),
+    topicId: '671656b99aa007596fc73c09',
+    title: 'install MongoDB',
+    description: 'follow the instructions to install mongo db',
+    dueDate: ISODate('2020-10-10T00:00:00.000Z'),
+    createdAt: ISODate('2020-10-02T00:00:00.000Z'),
+    updatedAt: ISODate('2024-10-21T13:39:52.692Z')
+  }
+]
+
+2)Find all the company drives which appeared between 15 oct-2020 and 31-oct-2020
+
+zenclassprogramme> db.CompanyDrives.find({
+...   createdAt: {
+...     $gte: new Date("2020-10-15"),
+...     $lte: new Date("2020-10-31")
+...   }
+... });
+[
+  {
+    _id: ObjectId('67165b0e9aa007596fc73c0e'),
+    driveName: 'project Resources-1',
+    driveLink: 'https://drive1.com/resources1',
+    createdAt: ISODate('2020-10-28T00:00:00.000Z'),
+    updatedAt: ISODate('2024-10-21T13:45:50.365Z')
+  },
+  {
+    _id: ObjectId('67165b0e9aa007596fc73c0f'),
+    driveName: 'project Resources-2',
+    driveLink: 'https://drive2.com/resources2',
+    createdAt: ISODate('2020-10-17T00:00:00.000Z'),
+    updatedAt: ISODate('2024-10-21T13:45:50.365Z')
+  }
+]
+zenclassprogramme>
+
+
+3)Find all the company drives and students who are appeared for the placement.
+
+zenclassprogramme> db.CompanyDrives.aggregate([ { $lookup: { from: "users", localField: "students", foreignField: "_id", as: "attendedStudents" } }, { $project: { driveName: 1, driveLink: 1, attendedStudents: { $filter: { input: "$attendedStudents", as: "student", cond: { $ne: ["$$student", null] } } } } }] )
+[
+  {
+    _id: ObjectId('67165b0e9aa007596fc73c0e'),
+    driveName: 'project Resources-1',
+    driveLink: 'https://drive1.com/resources1',
+    attendedStudents: []
+  },
+  {
+    _id: ObjectId('67165b0e9aa007596fc73c0f'),
+    driveName: 'project Resources-2',
+    driveLink: 'https://drive2.com/resources2',
+    attendedStudents: []
+  }
+]
+
+4)Find the number of problems solved by the user in codekata:
+
+zenclassprogramme> db.users.aggregate([
+...   {
+...     $lookup: {
+...       from: "codekata",
+...       localField: "_id",
+...       foreignField: "userId",
+...       as: "problems"
+...     }
+...   },
+...   {
+...     $project: {
+...       name: 1,
+...       email: 1,
+...       problemsSolved: { $size: "$problems" }
+...     }
+...   }
+... ]);
+[
+  {
+    _id: ObjectId('67164b292b5285381cc73bfc'),
+    name: 'sterin',
+    email: 'sterin@gmail.com',
+    problemsSolved: 1
+  },
+  {
+    _id: ObjectId('67164b292b5285381cc73bfd'),
+    name: 'jane',
+    email: 'jane@gmail.com',
+    problemsSolved: 1
+  }
+]
+
+5)Find all the mentors with who has the mentee's count more than 15
+
+zenclassprogramme> db.mentors.aggregate([
+...   {
+...     $lookup: {
+...       from: "users",
+...       localField: "name", // Match mentor's name with users.mentor
+...       foreignField: "mentor",
+...       as: "mentees"
+...     }
+...   },
+...   {
+...     $project: {
+...       name: 1,
+...       specialization: 1,
+...       mentees: 1, // Display mentees array
+...       menteesCount: { $size: "$mentees" } // Show number of mentees
+...     }
+...   }
+... ]);
+[
+  {
+    _id: ObjectId('671655599aa007596fc73c06'),
+    specialization: 'Database Management',
+    mentees: [],
+    menteesCount: 0
+  },
+  {
+    _id: ObjectId('671655599aa007596fc73c07'),
+    specialization: 'full stack development',
+    mentees: [],
+    menteesCount: 0
+  }
+]
+zenclassprogramme> db.mentors.aggregate([
+...   {
+...     $lookup: {
+...       from: "users",
+...       localField: "name",
+...       foreignField: "mentor",
+...       as: "mentees"
+...     }
+...   },
+...   {
+...     $project: {
+...       name: 1,
+...       specialization: 1,
+...       menteesCount: { $size: "$mentees" }
+...     }
+...   },
+...   {
+...     $match: { $expr: { $gt: ["$menteesCount", 15] } } // Filter for mentors with more than 15 mentees
+...   }
+... ]);
+
+zenclassprogramme>
+
+
+                       ( THERE IS NO MENTEES SO THERE IS NO RESULT )
+
+
+6)zenclassprogramme> db.attendance.aggregate([
+...   {
+...     // Step 1: Match users who are absent between 15th Oct 2020 and 31st Oct 2020
+...     $match: {
+...       classDate: {
+...         $gte: new Date("2020-10-15"),
+...         $lte: new Date("2020-10-31")
+...       },
+...       status: "Absent"
+...     }
+...   },
+...   {
+...     // Step 2: Lookup tasks collection to see if the user submitted any tasks
+...     $lookup: {
+...       from: "tasks",
+...       localField: "userId",
+...       foreignField: "userId",
+...       as: "submittedTasks"
+...     }
+...   },
+...   {
+...     // Step 3: Filter users who have not submitted any tasks
+...     $match: {
+...       "submittedTasks": { $eq: [] } // Check if no tasks are submitted
+...     }
+...   },
+...   {
+...     // Step 4: Count the absent users who didn't submit tasks
+...     $count: "absentUsersWithoutSubmittedTasks"
+...   }
+... ]);
+[ { absentUsersWithoutSubmittedTasks: 1 } ]
+
+
+
+
+
+
+
+
+
+
+
